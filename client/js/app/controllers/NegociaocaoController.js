@@ -12,16 +12,19 @@ class NegociacaoController {
     adiciona(event) {
 
         event.preventDefault();
-        // ... operador spread diz que sera converido num array
-        console.log(this._inputData.value); // retorna yyyy-MM--dd
-        let data = new Date(
-            ...this._inputData.value
-                .split('-')
-                .map((item, index) => {
-                    return item - index % 2;
-                })
+        
+        let helper = new DataHelper();
+        
+
+        let negocicao = new Negociacao(
+            helper.textoParaData(this._inputData.value),
+            this._inputQuantidade.value,
+            this._inputValor.value
         );
-                F
-                
+        console.log(negocicao);
+        console.log(helper.dataParaTexto(negocicao.data));
+        
+        
+
     }
 }
