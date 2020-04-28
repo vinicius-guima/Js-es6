@@ -13,7 +13,7 @@
 
     <h1 class="text-center">Negociações</h1>
 
-    <form class="form">
+    <form class="form" onsubmit="negociacaoController.adiciona(event)">
 
         <div class="form-group">
             <label for="data">Data</label>
@@ -27,7 +27,7 @@
 
         <div class="form-group">
             <label for="valor">Valor</label>
-            <input id="valor" type="number" class="form-control" min="0.01" step="0.01" value="0.0" required />
+            <input id="valor" type="number" class="form-control" min="0.01" step="10.0" value="0.01" required />
         </div>
 
         <button class="btn btn-primary" type="submit">Incluir</button>
@@ -61,23 +61,12 @@
         </tfoot>
     </table>
     <!--  <script src="js/index.js"></script> -->
-    <script src="js/app/models/Negociacao.js"></script>
 
+    <script src="js/app/models/Negociacao.js"></script>
+    <script src="js/app/controllers/NegociaocaoController.js"></script>
     <script>
 
-        let hj = new Date();
-        let negociacao = new Negociacao(hj, 2, 100);
-        console.log(negociacao);
-        console.log(hj);
-
-        hj.setDate(30);
-        console.log(hj);
-
-        console.log(negociacao.data);
-        console.log(negociacao);
-
-
-
+        let negociacaoController = new NegociacaoController()
 
     </script>
 </body>
