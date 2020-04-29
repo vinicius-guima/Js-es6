@@ -1,16 +1,26 @@
 class DataHelper {
 
-    textoParaData(texto) {
+    constructor() {
+        throw new Error('DateHelper não pode ser instanciada')
+    }
+
+    static dataParaTexto(data) {
+
+        return `${data.getDate()}/${data.getMonth() + 1}/${data.getFullYear()}`
+        /* return data.getDate() //template string acima faz a mesma função 
+            + '/' + (data.getMonth() + 1)
+            + '/' + data.getFullYear() */
+    }
+
+    static textoParaData(texto) {
+
+        if (!/\d{4}-\d{2}-\d{2}/.test(texto))
+            throw new Error('A data deve estar no formato yyyy-MM-dd')
+
         return new Date(
             ...texto
                 .split('-')
                 .map((item, index) => item - index % 2)
         );
-    }
-
-    dataParaTexto(data) {
-        return data.getDate()
-            + '/' + (data.getMonth() + 1)
-            + '/' + data.getFullYear()
     }
 }

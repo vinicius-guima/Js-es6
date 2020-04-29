@@ -6,25 +6,33 @@ class NegociacaoController {
         this._inputData = $('#data');                  // se asemelha a sintaxe do jquery 
         this._inputQuantidade = $('#quantidade');
         this._inputValor = $('#valor');
+        this._listaNegociacoes = new ListaNegociacoes();
+
+
 
     }
 
     adiciona(event) {
 
         event.preventDefault();
-        
-        let helper = new DataHelper();
-        
 
         let negocicao = new Negociacao(
-            helper.textoParaData(this._inputData.value),
+            DataHelper.textoParaData(this._inputData.value),
             this._inputQuantidade.value,
             this._inputValor.value
         );
-        console.log(negocicao);
-        console.log(helper.dataParaTexto(negocicao.data));
-        
-        
 
+        this._listaNegociacoes.adiciona(negocicao);
+        this._limpaFormulario();
+
+        console.log(this._listaNegociacoes.negociacoes);
+    }
+
+    _limpaFormulario() {
+        this._inputData.value = '';
+        this._inputQuantidade = 0;
+        this._inputValor = 0.0;
+
+        this._inputData.focus();
     }
 }
