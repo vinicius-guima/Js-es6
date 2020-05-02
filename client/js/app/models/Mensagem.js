@@ -1,7 +1,7 @@
 class Mensagem{
 
-    constructor(texto= 'valor padrão do argumento'){
-        this._texto;
+    constructor(texto= ''){
+        this._texto = texto;
     }
 
 
